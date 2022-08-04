@@ -1,0 +1,78 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  min-height: 100%;
+}
+.content {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+#footer{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.master-container{
+  max-width: 1500px;
+}
+
+.mountainPic{
+  max-width: 100%;
+  box-shadow: 0 0 10px;
+}
+
+.contain{
+  display: flex;
+  gap: 10px;
+}
+
+.er{
+  height: 700px;
+  box-shadow: 0 0 5px;
+}
+
+.YBContain{
+  max-width: 1500px;
+}
+
+.containing{
+  display: flex;
+  gap: 10px;
+}
+
+.YBImg{
+  max-width: 100%;
+  height: 150px;
+  box-shadow: 0 0 5px;
+}
+
+.YBTxt{
+  padding: 20px;
+}

@@ -1,0 +1,45 @@
+@model Ride
+
+@if(Model.UserId == Context.Session.GetInt32("userId"))
+{
+    <p><a href="/ride/delete/@Model.RideId">Delete</a> | <a href="/ride/edit/@Model.RideId">Edit</a></p>
+}
+else
+{
+        @if(Model.PeopleWhoJoined.Any(u => u.UserId == Context.Session.GetInt32("userId")))
+        {
+            <a href="/ride/leave/@Model.RideId">Leave</a>
+        }
+        else
+        {
+            <a href="/ride/join/@Model.RideId">Join</a>
+        }
+    }
+<h2>@Model.Title</h2>
+<h4>Rendezvous Address: @Model.Address, @Model.City, @Model.State @Model.Zip</h4>
+<h4>Link up time: @Model.DateNTime</h4>
+<h4>Ride Distance: @Model.Distance mi</h4>
+<h4>Bike Type to Ride: @Model.BikeType</h4>
+<h4>Exclusive to Above Bike Type? @Model.Exclusive</h4>
+<h4>Description: @Model.Description</h4>
+<h4>Ride Out Coordinator: @Model.RideCoordinator.LName, @Model.RideCoordinator.FName</h4>
+<h4>Riders:</h4>
+<ul>
+    @foreach (Join j in Model.PeopleWhoJoined)
+    {
+        <li>@j.UserWhoJoined.LName, @j.UserWhoJoined.FName</li>
+    }
+</ul>
+
+<div>
+    <iframe
+        width="600"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBqqGUDOthMDipKzCFz30_iYATK19lq3TM
+            &q=@Model.Address, @Model.City, @Model.State @Model.Zip">
+    </iframe>
+</div>

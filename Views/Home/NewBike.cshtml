@@ -1,0 +1,59 @@
+@model Bike
+
+<h1 class="display-4">New Bike</h1>
+<form action="/bike/new/add" method="post">
+    <div class="form-group">
+        <label for="Year">Year</label>
+        <input asp-for="Year" class="form-control">
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Make">Make</label>
+        <input asp-for="Make" class="form-control">
+        <span asp-validation-for="Make" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Model">Model</label>
+        <input asp-for="Model" class="form-control">
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Discplacement">Discplacement</label>
+        <input asp-for="Discplacement" class="form-control">
+        <span asp-validation-for="Discplacement" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="BikeType">BikeType</label>
+        <select asp-for="BikeType">
+            <option value="">--Select--</option>
+            <option value="Standard">Standard</option>
+            <option value="Cruiser">Cruiser</option>
+            <option value="Sports">Sports</option>
+            <option value="Naked">Naked</option>
+            <option value="Tourer">Tourer</option>
+            <option value="Sports Touring">Sports Touring</option>
+            <option value="Dual-Sport">Dual-Sport</option>
+            <option value="Off-Road">Off-Road</option>
+            <option value="SuperMoto">SuperMoto</option>
+            <option value="Adventure">Adventure</option>
+        </select>
+        <span asp-validation-for="BikeType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="NickName">NickName</label>
+        <input asp-for="NickName" class="form-control">
+        <span asp-validation-for="NickName" class="text-danger"></span>
+    </div>
+    <div class="form-check">
+        <p>For Sale?</p>
+        <input asp-for="ForSale" type="radio" value="Yes">
+        <label for="ForSale">Yes</label>
+        <input asp-for="ForSale" type="radio" value="No">
+        <label for="ForSale">No</label>
+        <span asp-validation-for="ForSale" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+            <input type="file" name="Image" id="Imageinput" class="form-control">
+    </div>
+    <input type="submit" value="Add Bike" class="btn btn-info">
+</form>

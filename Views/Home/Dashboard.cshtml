@@ -1,0 +1,57 @@
+@model Ride
+<div class="master-container">
+    <div class="dashHeader">
+        <h1 class="display-4">Welcome, @ViewBag.LoggedIn.FName!</h1>
+        <h3 class="display-6">Check out Some Rides </h3>
+    </div>
+    <img src="../pics/dashboardtop.jpg" alt="dash-top" class="mountainPic">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <th>Ride Out</th>
+                <th>Rendezvous Location</th>
+                <th>Date and Time</th>
+                <th>Distance</th>
+                <th>Bike Type</th>
+                <th>Exclusive to Stated Bike Type?</th>
+                <th>Ride Coordinator</th>
+                <th>No. of Participants</th>
+                <th>Descripttion</th>
+                <th>Action</th>
+            </thead>
+            @foreach(Ride m in ViewBag.AllRideOuts)
+            {
+                @if(m.DateNTime > DateTime.Now)
+                {
+                    <tr>
+                        <td><a href="/oneride/@m.RideId">@m.Title</a></td>
+                        <td>@m.Address, @m.City, @m.State @m.Zip</td>
+                        <td>@m.DateNTime</td>
+                        <td>@m.Distance mi</td>
+                        <td>@m.BikeType</td>
+                        <td>@m.Exclusive</td>
+                        <td>@m.RideCoordinator.LName, @m.RideCoordinator.FName</td>
+                        <td>@m.PeopleWhoJoined.Count</td>
+                        <td>@m.Description</td>
+                        @if(m.UserId == Context.Session.GetInt32("userId"))
+                        {
+                            <td><a href="/ride/delete/@m.RideId">Delete</a> | <a href="/ride/edit/@m.RideId">Edit</a></td>
+                        }
+                        else
+                        {
+                            @if(m.PeopleWhoJoined.Any(u => u.UserId == Context.Session.GetInt32("userId")))
+                            {
+                            <td><a href="/ride/leave/@m.RideId">Leave</a></td>
+                            }
+                            else
+                            {
+                                <td><a href="/ride/join/@m.RideId">Join</a></td>
+                            }
+                        }
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <a href="/ride/new" class="btn btn-info">Add New Ride Out</a>
+</div>

@@ -1,0 +1,40 @@
+@model User
+<div class="YBContain">
+    <div class="containing">
+        <div class="YBTxt">
+            <h1 class="display-4">Your Bikes</h1>
+        </div>
+        <div>
+            <img src="../pics/yourBikes.jpg" alt="yourBikes" class="YBImg">
+        </div>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Disaplacement</th>
+                <th>Type</th>
+                <th>Nick Name</th>
+                <th>For Sale?</th>
+                <th>Actions</th>
+            </thead>
+            @foreach (Bike b in ViewBag.MyBikes)
+            {
+                <tr>
+                    <td>@b.Year</td>
+                    <td><a href="/onebike/@b.BikeId">@b.Make</a></td>
+                    <td>@b.Model</td>
+                    <td>@b.Discplacement cc</td>
+                    <td>@b.BikeType</td>
+                    <td>@b.NickName</td>
+                    <td>@b.ForSale</td>
+                    <td><a href="/bike/edit/@b.BikeId">Edit</a> | <a href="/bike/delete/@b.BikeId">Delete</a></td>
+                </tr>
+            }
+        </table>
+
+        <a href="/bike/new" class="btn btn-info">Add New Bike</a>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+@model Bike
+
+<a href="/bike/edit/@Model.BikeId">Edit</a> | <a href="/bike/delete/@Model.BikeId">Delete</a>
+<h1>@Model.Year @Model.Make @Model.Model</h1>
+<h4>Disaplacement: @Model.Discplacement cc</h4>
+<h4>Type: @Model.BikeType</h4>
+<h4>Nick Name: @Model.NickName</h4>
+<h4>For Sale? @Model.ForSale</h4>

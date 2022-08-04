@@ -1,0 +1,42 @@
+<div class="contain">
+    <div class="er">
+        <img src="../pics/allBikes.jpg" alt="allBikes" class="er">
+    </div>
+    <div class="body">
+        <h1 class="display-4">Check Out Our Riders Bikes</h1>
+        <table class="table table-striped">
+            <thead>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Disaplacement</th>
+                <th>Type</th>
+                <th>Nick Name</th>
+                <th>For Sale?</th>
+                <th>Contact</th>
+                <th>Owner</th>
+            </thead>
+            @foreach (Bike b in ViewBag.Allbikes)
+            {
+                <tr>
+                    <td>@b.Year</td>
+                    <td><a href="/onebike/@b.BikeId">@b.Make</a></td>
+                    <td>@b.Model</td>
+                    <td>@b.Discplacement cc</td>
+                    <td>@b.BikeType</td>
+                    <td>@b.NickName</td>
+                    <td>@b.ForSale</td>
+                    @if(b.ForSale == "Yes")
+                    {
+                        <td>@b.BikeOwner.Email</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td>@b.BikeOwner.LName, @b.BikeOwner.FName</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
